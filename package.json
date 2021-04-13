@@ -1,0 +1,32 @@
+{
+  "name": "covid-vaccine-spotter-notifications",
+  "version": "1.0.0",
+  "description": "A basic notification system for vaccine spotter",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "build": "npm run lint && tsc",
+    "lint": "eslint src/** --fix",
+    "test": "test"
+  },
+  "author": "Raymond Kelly",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "@types/node-cron": "^2.0.3",
+    "@types/nodemailer": "^6.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "axios": "^0.21.1",
+    "eslint": "^7.24.0",
+    "geolib": "^3.3.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-cron": "^3.0.0",
+    "node-json2html": "^2.1.0",
+    "nodemailer": "^6.5.0",
+    "ts-node": "^9.1.1"
+  }
+}
