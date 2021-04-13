@@ -1,6 +1,6 @@
 # COVID-VACCINE-SPOTTER-NOTIFICATIONS
 
-COVID-VACCINE-SPOTTER-NOTIFICATIONS is a quick library that you can run locally to get email notifications whenever covid vaccine appointments are available in your area.
+COVID-VACCINE-SPOTTER-NOTIFICATIONS is a quick project that you can run locally to get email notifications whenever covid vaccine appointments are available in your area.
 
 ## Installation
 
