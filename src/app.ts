@@ -26,11 +26,11 @@ cron.schedule('*/1 * * * *', () => {
 function start(){
     getStoresWithVaccinesAvailableWithinDistance(STATE, ZIPCODE, RADIUS).then(storesWithVaccines => {
         const currentListOfStoresWithAppt = getListofStoresById(storesWithVaccines);
+        storesWithVaccines = storesWithVaccines.filter(store => {
+            return isNewlyAdded(store, previousListOfStoresWithAppt);
+        });
         //Send a notification only if there is a new store added to the list
-        if(currentListOfStoresWithAppt.length && currentListOfStoresWithAppt.some(r=> !previousListOfStoresWithAppt.includes(r))) {
-            storesWithVaccines = storesWithVaccines.filter(store => {
-                return isNewlyAdded(store, previousListOfStoresWithAppt);
-            });
+        if(storesWithVaccines.length) {
             sendEmail(STATE, ZIPCODE, RADIUS, storesWithVaccines);   
             previousListOfStoresWithAppt = currentListOfStoresWithAppt;      
         } else {

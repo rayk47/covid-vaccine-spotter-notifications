@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { getDistance, convertDistance } from 'geolib';
+import { LocationCache } from '../caches/LocationCache';
 
 /**
  * Calculates the distance from one longitude and latitude point to another
@@ -24,9 +24,6 @@ export async function getDistanceFromZip(fromLatitude:number, fromLongitude:numb
  * @returns the longitude and latitude points of a zip code
  */
 export async function getLocation(zipCode:string): Promise<{lat:number, lng:number}> {
-    const data = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?region=us&address=${zipCode}&key=${process.env.GOOGLE_GEOCODE_API_KEY}`);
-    if(data?.data?.results?.[0]?.geometry?.location){
-        return data.data.results[0].geometry.location;
-    }
-    throw new Error(`Could not find geometry of zip ${zipCode}`);
+    const location = await LocationCache.getInstance().getLocationData(zipCode);
+    return location.geometry.location;
 }
